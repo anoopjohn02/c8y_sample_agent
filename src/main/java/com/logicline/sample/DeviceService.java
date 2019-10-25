@@ -6,6 +6,7 @@ import com.cumulocity.model.idtype.GId;
 import com.cumulocity.rest.representation.inventory.ManagedObjectRepresentation;
 import com.cumulocity.rest.representation.operation.OperationRepresentation;
 import com.cumulocity.sdk.client.Platform;
+import com.logicline.sample.commons.SystemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,9 +16,12 @@ public class DeviceService {
     @Autowired
     private static Platform platform;
 
-    private static final String BOX_NAME_PREFIX = "ed_";
+    private static final String BOX_NAME_PREFIX = "test_";
 
     public static final String TYPE = "km_edgeDevice";
+
+    @Autowired
+    private SystemUtils systemUtils;
 
     @Value("${app.version}")
     private String version;
@@ -34,6 +38,7 @@ public class DeviceService {
         firmware.setName("KMAgent");
         firmware.setVersion(version);
         managedObjectRepresentation.set(firmware, "c8y_Firmware");
+
         platform.getInventoryApi().create(managedObjectRepresentation);
     }
 }
