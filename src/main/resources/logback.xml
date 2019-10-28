@@ -1,0 +1,99 @@
+<configuration scan="true">
+	<property scope="system" name="LOGBACK_LOG_PATH"
+		value="${SYSTEM_PROP_LOG_DIR}" />
+	<property name="LOG_ARCHIVE"
+		value="${LOGBACK_LOG_PATH}/archive" />
+	<property name="event_log" value="event" />
+	<property name="debug_log" value="debug" />
+	<property name="debug_log_pattern"
+		value="[%d{yyyy-MM-dd'T'HH:mm:ss.SSSX,UTC}] [%thread] %-5level %logger - %msg%n" />
+	<property name="event_log_pattern"
+		value="[%d{yyyy-MM-dd'T'HH:mm:ss.SSSX,UTC}] %marker-%msg%n" />
+
+	<shutdownHook
+		class="ch.qos.logback.core.hook.DelayingShutdownHook" />
+
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${debug_log_pattern}</pattern>
+		</encoder>
+		<immediateFlush>false</immediateFlush>
+	</appender>
+
+	<appender name="Async-STDOUT"
+		class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="STDOUT" />
+	</appender>
+
+	<appender name="DEBUGFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGBACK_LOG_PATH}/${debug_log}.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_ARCHIVE}/${debug_log}.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<maxFileSize>5MB</maxFileSize>
+			<maxHistory>28</maxHistory>
+			<totalSizeCap>1000MB</totalSizeCap>
+		</rollingPolicy>
+		<immediateFlush>false</immediateFlush>
+		<encoder>
+			<pattern>${debug_log_pattern}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="Async-DEBUGFILE"
+		class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="DEBUGFILE" />
+	</appender>
+
+	<appender name="EVENTLOGFILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOGBACK_LOG_PATH}/${event_log}.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_ARCHIVE}/${event_log}.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<maxFileSize>5MB</maxFileSize>
+			<maxHistory>28</maxHistory>
+			<totalSizeCap>1000MB</totalSizeCap>
+		</rollingPolicy>
+		<immediateFlush>false</immediateFlush>
+		<encoder>
+			<pattern>${event_log_pattern}</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="Async-EVENTLOGFILE"
+		class="ch.qos.logback.classic.AsyncAppender">
+		<appender-ref ref="EVENTLOGFILE" />
+	</appender>
+
+	<logger name="com.km.connector.logs.EventLogger" level="INFO"
+		additivity="false">
+		<appender-ref ref="Async-EVENTLOGFILE" />
+	</logger>
+
+	<logger name="org.svenson.JSONParser" level="INFO" />
+	<logger name="org.apache" level="INFO" />
+	<logger name="httpclient.wire" level="INFO" />
+	<!-- <logger -->
+	<!-- name="com.cumulocity.sdk.client.notification.ConnectionHeartBeatWatcher" -->
+	<!-- level="DEBUG" /> -->
+	<!-- <logger name="com.cumulocity.sdk.client" level="INFO" /> -->
+	<logger name="org.cometd" level="INFO" />
+	<logger name="org.eclipse.jetty" level="INFO" />
+	<logger name="org.springframework.web.client.RestTemplate"
+		level="INFO" />
+	<logger name="org.springframework.web.servlet" level="INFO" />
+	<logger
+		name="com.cumulocity.sdk.client.notification.MessageExchange"
+		level="INFO" />
+
+	<root level="debug">
+		<appender-ref ref="Async-STDOUT" />
+		<appender-ref ref="Async-DEBUGFILE" />
+	</root>
+
+</configuration>
