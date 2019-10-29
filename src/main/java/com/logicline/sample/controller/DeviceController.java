@@ -20,10 +20,10 @@ public class DeviceController {
     @Qualifier("deviceService")
     private DeviceService deviceService;
 
-    @GetMapping(value = "/createdevice")
+    @GetMapping(value = "/sendnewmeasurement")
     @ResponseStatus(HttpStatus.OK)
     public String createDevice(Locale locale, Model model) throws AgentRuntimeException {
-        deviceService.createSampleDevice();
+        deviceService.sendNewMeasurement();
         return "SUCCESS";
     }
 }

@@ -61,7 +61,7 @@ public class Agent {
         String serial = specifySerialNumber();
         ID extId = asExternalId(serial);
         mo.setType(TYPE);
-        mo.setName("EWD_" + serial);
+        mo.setName(serial);
         mo.set(new com.cumulocity.model.Agent());
         mo.set(new IsDevice());
         mo.set(new RequiredAvailability(RESPONSE_INTERVAL_MIN));
