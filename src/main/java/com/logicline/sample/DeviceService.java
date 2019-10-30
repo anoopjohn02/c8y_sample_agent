@@ -32,8 +32,12 @@ public class DeviceService {
         MeasurementRepresentation measurementRepresentation = new MeasurementRepresentation();
         measurementRepresentation.setSource(mo);
         measurementRepresentation.setTime(new Date());
-        measurementRepresentation.setType("Test_Measurement_Type");
-        measurementRepresentation.set(Math.random());
+        measurementRepresentation.setType("c8y_SampleMeasurement");
+
+        Measurement measurement = new Measurement();
+        measurement.setUnit("S");
+        measurement.setValue(Math.random());
+        measurementRepresentation.set(measurement);
 
         MeasurementRepresentation resultingMeasurementRepresentation = platform.getMeasurementApi().create(measurementRepresentation);
         if(resultingMeasurementRepresentation == null){
