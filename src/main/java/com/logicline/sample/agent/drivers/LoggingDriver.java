@@ -31,7 +31,7 @@ public class LoggingDriver implements Driver, OperationExecutor {
     }
 
     @Override
-    public void execute(OperationRepresentation operation) throws Exception {
+    public void execute(Object obj) throws Exception {
         logger.info("LOGGING Operation successfully called...");
     }
 

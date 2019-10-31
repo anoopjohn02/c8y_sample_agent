@@ -26,7 +26,7 @@ import com.cumulocity.rest.representation.operation.OperationRepresentation;
  */
 public interface OperationExecutor {
 
-    public void execute(OperationRepresentation operation) throws Exception;
+    public void execute(Object obj) throws Exception;
 
     public ExecuterType getType();
 }

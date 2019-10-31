@@ -1,7 +1,7 @@
 package com.logicline.sample.agent.drivers;
 
 public enum ExecuterType {
-    LOGGING;
+    LOGGING,LIGHT;
 
     public static ExecuterType getType(String name){
         try {

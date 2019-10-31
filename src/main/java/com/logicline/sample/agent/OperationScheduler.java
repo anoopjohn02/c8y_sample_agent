@@ -107,7 +107,7 @@ public class OperationScheduler {
             if(validateType(type)){
                 logger.info("Executing operation for key {}", key);
                 try{
-                    executers.get(type).execute(operation);
+                    executers.get(type).execute(operation.getAttrs().get(key));
                     operation.setStatus(OperationStatus.SUCCESSFUL.toString());
                 }catch (Exception e){
                     operation.setStatus(OperationStatus.FAILED.toString());
