@@ -1,5 +1,6 @@
 package com.logicline.sample.commons;
 
+import com.logicline.sample.agent.model.Measurement;
 import org.joda.time.DateTime;
 import org.joda.time.Seconds;
 import org.joda.time.format.DateTimeFormat;
@@ -40,5 +41,12 @@ public class Util {
     DateTime eDate = new DateTime(eT);
     DateTime bDate = new DateTime(bT);
     return Seconds.secondsBetween(bDate, eDate).getSeconds();
+  }
+
+  public static Measurement getRandomMeasurement(){
+    Measurement measurement = new Measurement();
+    measurement.setUnit("S");
+    measurement.setValue(Math.random());
+    return measurement;
   }
 }

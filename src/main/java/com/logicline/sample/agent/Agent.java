@@ -28,6 +28,8 @@ public class Agent {
     private final String serial;
     private final String host;
 
+
+
     public Agent(String serial, String host) {
         this(CredentialsManager.defaultCredentialsManager(host), serial, host);
     }

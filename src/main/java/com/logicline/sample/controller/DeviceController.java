@@ -1,6 +1,6 @@
 package com.logicline.sample.controller;
 
-import com.logicline.sample.DeviceService;
+import com.logicline.sample.agent.service.DeviceService;
 import com.logicline.sample.agent.exceptions.AgentRuntimeException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

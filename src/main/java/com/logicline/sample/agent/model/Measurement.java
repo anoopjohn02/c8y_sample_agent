@@ -1,4 +1,4 @@
-package com.logicline.sample;
+package com.logicline.sample.agent.model;
 
 public class Measurement {
     private String unit;
