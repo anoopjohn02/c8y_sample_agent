@@ -84,6 +84,7 @@
 	<!-- <logger name="com.cumulocity.sdk.client" level="INFO" /> -->
 	<logger name="org.cometd" level="INFO" />
 	<logger name="org.eclipse.jetty" level="INFO" />
+	<logger name="com.pi4j" level="DEBUG" />
 	<logger name="org.springframework.web.client.RestTemplate"
 		level="INFO" />
 	<logger name="org.springframework.web.servlet" level="INFO" />
