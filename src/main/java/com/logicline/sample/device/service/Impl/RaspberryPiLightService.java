@@ -10,7 +10,8 @@ public class RaspberryPiLightService implements LightService {
     @Override
     public void init(){
         GpioController gpio = GpioFactory.getInstance();
-        pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
+        pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "MyLED", PinState.HIGH);
+        pin.low();
     }
 
     @Override
