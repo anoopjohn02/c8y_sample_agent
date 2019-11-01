@@ -16,12 +16,7 @@ public class RaspberryPiLightService implements LightService {
     public void init(){
         logger.info("RaspberryPiLight Operation - init ");
         GpioController gpio = GpioFactory.getInstance();
-        //Pin pin = CommandArgumentParser.getPin( RaspiPin.class, RaspiPin.GPIO_22, null);
-        output = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "MyLED", PinState.HIGH);
-        //output = gpio.provisionDigitalOutputPin(pin, "My Output", PinState.HIGH);
-        //output.setShutdownOptions(true, PinState.LOW);
-
-        output.low();
+        output = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_03, "MyLED", PinState.LOW);
     }
 
     @Override

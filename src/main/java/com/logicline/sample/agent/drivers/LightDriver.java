@@ -37,12 +37,11 @@ public class LightDriver implements Driver, OperationExecutor {
         HashMap light = (HashMap) obj;
         logger.info("LIGHT Operation successfully called {} ", light.get("on"));
         LightService lightService = DeviceServiceFactory.getLightService();
-        /*if((boolean)light.get("on")){
+        if((boolean)light.get("on")){
             lightService.switchOn();
         } else {
             lightService.switchOff();
-        }*/
-        lightService.toggle();
+        }
     }
 
     @Override
