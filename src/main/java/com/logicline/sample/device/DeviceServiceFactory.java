@@ -5,9 +5,12 @@ import com.logicline.sample.device.service.LightService;
 
 public class DeviceServiceFactory {
 
+    private static LightService lightService;
     public static LightService getLightService(){
-        LightService lightService = new RaspberryPiLightService();
-        lightService.init();
+        if(lightService == null){
+            lightService = new RaspberryPiLightService();
+            lightService.init();
+        }
         return lightService;
     }
 }
