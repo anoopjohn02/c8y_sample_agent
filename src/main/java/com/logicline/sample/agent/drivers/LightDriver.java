@@ -2,6 +2,7 @@ package com.logicline.sample.agent.drivers;
 
 import com.cumulocity.model.idtype.GId;
 import com.cumulocity.sdk.client.Platform;
+import com.logicline.sample.device.DeviceServiceFactory;
 import com.logicline.sample.device.service.Impl.RaspberryPiLightService;
 import com.logicline.sample.device.service.LightService;
 import org.slf4j.Logger;
@@ -35,7 +36,7 @@ public class LightDriver implements Driver, OperationExecutor {
     public void execute(Object obj) throws Exception {
         HashMap light = (HashMap) obj;
         logger.info("LIGHT Operation successfully called {} ", light.get("on"));
-        LightService lightService = getLightService();
+        LightService lightService = DeviceServiceFactory.getLightService();
         if((boolean)light.get("on")){
             lightService.switchOn();
         } else {
@@ -48,9 +49,5 @@ public class LightDriver implements Driver, OperationExecutor {
         return ExecuterType.LIGHT;
     }
 
-    private LightService getLightService(){
-        LightService lightService = new RaspberryPiLightService();
-        lightService.init();
-        return lightService;
-    }
+
 }
