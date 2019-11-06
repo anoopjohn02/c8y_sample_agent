@@ -3,12 +3,10 @@ package com.logicline.sample.agent.drivers;
 import com.cumulocity.model.idtype.GId;
 import com.cumulocity.sdk.client.Platform;
 import com.logicline.sample.device.DeviceServiceFactory;
-import com.logicline.sample.device.service.Impl.RaspberryPiLightService;
 import com.logicline.sample.device.service.LightService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

@@ -1,8 +1,7 @@
-package com.logicline.sample.device.service.Impl;
+package com.logicline.sample.device.service.raspberry;
 
 import com.logicline.sample.device.service.LightService;
 import com.pi4j.io.gpio.*;
-import com.pi4j.util.CommandArgumentParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

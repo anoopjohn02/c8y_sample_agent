@@ -1,6 +1,6 @@
 package com.logicline.sample.device;
 
-import com.logicline.sample.device.service.Impl.RaspberryPiLightService;
+import com.logicline.sample.device.service.raspberry.RaspberryPiLightService;
 import com.logicline.sample.device.service.LightService;
 
 public class DeviceServiceFactory {
